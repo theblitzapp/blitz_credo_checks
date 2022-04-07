@@ -9,7 +9,7 @@ defmodule BlitzCredoChecks.MixProject do
       start_permanent: Mix.env() == :prod,
       test_coverage: [tool: ExCoveralls],
       dialyzer: [
-        plt_add_apps: [:ex_unit, :mix],
+        plt_add_apps: [:ex_unit, :mix, :credo],
         list_unused_filters: true,
         plt_local_path: "dialyzer",
         plt_core_path: "dialyzer",
@@ -40,7 +40,7 @@ defmodule BlitzCredoChecks.MixProject do
   defp deps do
     [
       {:ex_check, "~> 0.12", only: :test, runtime: false},
-      {:credo, "~> 1.4", only: :test, runtime: false},
+      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: :test, runtime: false},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:ex_doc, "~> 0.26", only: [:dev, :test], runtime: false},

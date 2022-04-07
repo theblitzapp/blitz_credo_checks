@@ -66,6 +66,18 @@
       #
       checks: [
         #
+        ## Custom checks
+        #
+        {BlitzCredoChecks.DocsBeforeSpecs, []},
+        {BlitzCredoChecks.DoctestIndent, []},
+        {BlitzCredoChecks.LowercaseTestNames, []},
+        {BlitzCredoChecks.NoAsyncFalse, []},
+        {BlitzCredoChecks.NoDSLParentheses, []},
+        {BlitzCredoChecks.NoIsBitstring, []},
+        {BlitzCredoChecks.SetWarningsAsErrorsInTest, []},
+        {BlitzCredoChecks.StrictComparison, []},
+        {BlitzCredoChecks.UseStream, []},
+        #
         ## Consistency Checks
         #
         {Credo.Check.Consistency.ExceptionNames, []},
