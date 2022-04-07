@@ -24,4 +24,10 @@ blitz_credo_checks-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Elixir language server
 .elixir_ls
+
+# Dialyzer caching
+*.plt
+*.plt.hash
