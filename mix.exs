@@ -39,7 +39,6 @@ defmodule BlitzCredoChecks.MixProject do
     ]
   end
 
-
   defp package do
     [
       maintainers: ["Alan Vardy"],
