@@ -3,6 +3,6 @@ defmodule BlitzCredoChecksTest do
   doctest BlitzCredoChecks
 
   test "greets the world" do
-    assert BlitzCredoChecks.hello() == :world
+    assert BlitzCredoChecks.hello() === :world
   end
 end
