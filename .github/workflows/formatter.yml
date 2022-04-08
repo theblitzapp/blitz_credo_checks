@@ -1,4 +1,4 @@
-name: Dialyzer
+name: Formatter
 
 on: push
 
@@ -12,13 +12,12 @@ jobs:
           path: |
             deps
             _build
-            dialyzer
-          key: ${{ runner.os }}-mix-dialyzer-${{ hashFiles('**/mix.lock') }}
+          key: ${{ runner.os }}-mix-doctor-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            ${{ runner.os }}-mix-dialyzer-
+            ${{ runner.os }}-mix-doctor-
       - uses: erlef/setup-beam@v1
         with:
           otp-version: 24.2
           elixir-version: 1.12.3
       - run: mix deps.get
-      - run: mix dialyzer
+      - run: mix format --check-formatted
