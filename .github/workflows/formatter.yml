@@ -1,0 +1,23 @@
+name: Formatter
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-doctor-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-doctor-
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: 24.2
+          elixir-version: 1.12.3
+      - run: mix deps.get
+      - run: mix format --check-formatted
