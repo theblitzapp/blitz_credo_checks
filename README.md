@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/theblitzapp/blitz_credo_checks/workflows/Coveralls/badge.svg)](https://github.com/theblitzapp/blitz_credo_checks) [![Build Status](https://github.com/theblitzapp/blitz_credo_checks/workflows/Dialyzer/badge.svg)](https://github.com/theblitzapp/blitz_credo_checks) [![Build Status](https://github.com/theblitzapp/blitz_credo_checks/workflows/Credo/badge.svg)](https://github.com/theblitzapp/blitz_credo_checks)  [![Build Status](https://github.com/theblitzapp/blitz_credo_checks/workflows/Doctor/badge.svg)](https://github.com/theblitzapp/blitz_credo_checks) [![codecov](https://codecov.io/gh/theblitzapp/blitz_credo_checks/branch/master/graph/badge.svg?token=P3O42SF7VJ)](https://codecov.io/gh/theblitzapp/blitz_credo_checks) [![hex.pm](http://img.shields.io/hexpm/v/blitz_credo_checks.svg?style=flat)](https://hex.pm/packages/blitz_credo_checks)
 
-A set up custom checks used by the Blitz backend Elixir team on top of the excellent ones included with [Credo](https://github.com/rrrene/credo). We use these checks to catch errors, improve code quality, maintain consistency, and shorten pull request review times.
+A set of custom checks used by the Blitz Backend Elixir team on top of the excellent ones included with [Credo](https://github.com/rrrene/credo). We use these checks to catch errors, improve code quality, maintain consistency, and shorten pull request review times.
 
 Check the moduledocs inside the check modules themselves for details on the individual checks.
 
