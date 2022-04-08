@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.0 (2022-04-08)
+
 - Added checks
   - BlitzCredoChecks.DocsBeforeSpecs
   - BlitzCredoChecks.DoctestIndent
@@ -12,7 +14,7 @@
   - BlitzCredoChecks.SetWarningsAsErrorsInTest
   - BlitzCredoChecks.StrictComparison
   - BlitzCredoChecks.UseStream
-- Document use of library
+- General documentation and tooling
 
 ## Created Repo (2022-04-07)
 
