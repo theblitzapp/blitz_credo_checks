@@ -3,6 +3,9 @@
 ## Unreleased
 
 - Added CredoDiff task that runs Credo on files that have changed from trunk
+- Added checks
+  - BlitzCredoChecks.ImproperImport
+  - BlitzCredoChecks.NoRampantRepos
 
 ## v0.1.0 (2022-04-08)
 
