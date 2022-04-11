@@ -45,8 +45,7 @@ defmodule BlitzCredoChecks.MixProject do
       licenses: ["MIT"],
       links: %{github: "https://github.com/theblitzapp/blitz_credo_checks"},
       files: [
-        "lib/blitz_credo_checks.ex",
-        "lib/blitz_credo_checks",
+        "lib/",
         "mix.exs",
         "README.md",
         "CHANGELOG.md"
