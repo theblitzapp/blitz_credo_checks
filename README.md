@@ -56,6 +56,16 @@ Add some or all of these checks under the checks key in `.credo.exs`
 mix credo
 ```
 
+## CredoDiff
+
+This library also contains `Mix.Tasks.CredoDiff` which can run Credo checks across the subset of files that differ from a branch like `main`. This can be useful for incrementally improving the codebase through only applying certain checks on files that are currently being edited.
+
+```bash
+mix credo_diff --trunk main --name stricter_checks
+```
+
+See `Mix.Tasks.CredoDiff` for more details.
+
 ## Contributing
 
 We welcome contributions to this library. Bear in mind however that new checks can be very controversial as they have a large impact on developer experience. We therefore recommend that you open an issue to discuss a new check before beginning work on a new one.
