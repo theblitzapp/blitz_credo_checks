@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added CredoDiff task that runs Credo on files that have changed from trunk
+
 ## v0.1.0 (2022-04-08)
 
 - Added checks
