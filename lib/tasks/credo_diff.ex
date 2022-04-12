@@ -76,7 +76,7 @@ defmodule Mix.Tasks.CredoDiff do
 
   @doc "Print any errors we see and error if there is a non-zero exit code"
   @spec parse_credo_output({String.t(), non_neg_integer}, keyword) :: :ok | {:error, String.t()}
-  def parse_credo_output({output, code}, opts \\ []) do
+  def parse_credo_output({output, code}, opts \\ [print: true]) do
     if Keyword.get(opts, :print) do
       output
       |> String.split(~r/\n/)
