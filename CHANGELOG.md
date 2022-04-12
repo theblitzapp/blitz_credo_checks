@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.2 (2022-04-12)
+
 - Added check
   - BlitzCredoChecks.TodoNeedsTickets
 
