@@ -47,6 +47,7 @@ Add some or all of these checks under the checks key in `.credo.exs`
         {BlitzCredoChecks.UseStream, []},
         {BlitzCredoChecks.ImproperImport, []}, 
         {BlitzCredoChecks.NoRampantRepos, []},
+        {BlitzCredoChecks.TodosNeedTickets, ticket_url: "https://linear.app/company/issue/"},
         
         # ... all the other checks that come with Credo
       ]
