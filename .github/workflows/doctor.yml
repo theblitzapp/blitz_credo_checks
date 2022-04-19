@@ -3,7 +3,7 @@ name: Doctor
 on: push
 
 jobs:
-  test:
+  doctor:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
