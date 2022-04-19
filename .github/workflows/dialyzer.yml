@@ -3,7 +3,7 @@ name: Dialyzer
 on: push
 
 jobs:
-  test:
+  dialyzer:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix CI checks names
+
 ## v0.1.3 (2022-04-12)
 
 - Fix print statements not showing in console for credo_diff errors
