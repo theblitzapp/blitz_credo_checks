@@ -110,3 +110,9 @@ And fetch your dependencies to pull in the local version you are working on
 ```bash
 mix deps.get
 ```
+
+### Hiring
+
+Are you looking for a new gig?? We're looking for mid-level to senior level developers to join our team and continue growing our platform while building awesome software!
+
+Come join us at [Blitz.gg](https://blitz.gg/careers)
