@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## v0.1.4
+
 - Fix CI checks names
+- Enforce that indentation is at least 4 characters in BlitzCredoChecks.DoctestIndent
 
 ## v0.1.3 (2022-04-12)
 
