@@ -25,7 +25,7 @@ defmodule BlitzCredoChecks.DoctestIndentTest do
     |> assert_issue()
   end
 
-  test "accepts indented examples" do
+  test "rejects examples not indented enough" do
     """
     defmodule SomeApp.SomeContext.SomeModule do
 
@@ -36,6 +36,28 @@ defmodule BlitzCredoChecks.DoctestIndentTest do
 
         iex> String.to_atom("something")
         :something
+      \"\"\"
+      def some_function do
+        "This does nothing"
+      end
+    end
+    """
+    |> to_source_file()
+    |> DoctestIndent.run([])
+    |> assert_issue()
+  end
+
+  test "accepts examples indented by at least 4 spaces" do
+    """
+    defmodule SomeApp.SomeContext.SomeModule do
+
+      @doc \"\"\"
+      This is a description
+
+      ## Example
+
+          iex> String.to_atom("something")
+          :something
       \"\"\"
       def some_function do
         "This does nothing"

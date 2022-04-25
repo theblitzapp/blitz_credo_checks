@@ -2,11 +2,13 @@ defmodule BlitzCredoChecks.DoctestIndent do
   use Credo.Check, base_priority: :high, category: :readability
 
   @moduledoc """
-  Doctest examples should be indented
+  Doctest examples should be indented by at least 4 spaces
 
   This allows ex_doc to render the example in a code block
   """
   @explanation [check: @moduledoc]
+
+  @regex ~r/(?<!    )iex>/
 
   @doc false
   @impl Credo.Check
@@ -19,7 +21,7 @@ defmodule BlitzCredoChecks.DoctestIndent do
   end
 
   defp traverse({:@, meta, [{:doc, _, [doc]}]} = ast, issues) when is_binary(doc) do
-    if String.contains?(doc, "\niex>") do
+    if Regex.match?(@regex, doc) do
       {ast, [meta[:line] | issues]}
     else
       {ast, issues}
