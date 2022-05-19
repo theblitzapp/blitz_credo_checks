@@ -18,7 +18,7 @@ jobs:
       - uses: erlef/setup-beam@v1
         with:
           otp-version: 24.1
-          elixir-version: 1.13.3
+          elixir-version: 1.13.4
       - run: mix deps.get
       - run: MIX_ENV=test mix coveralls.json
       - name: Upload to codecov.io
