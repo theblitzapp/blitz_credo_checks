@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-## v0.1.4
+## v0.1.5 (2022-05-26)
+
+- Make Credo available for prod build to resolve OTP 25 errors on release
+- Update OTP/Elixir versions
+- Minor dependency updates
+
+## v0.1.4 (2022-04-25)
 
 - Fix CI checks names
 - Enforce that indentation is at least 4 characters in BlitzCredoChecks.DoctestIndent
