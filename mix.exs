@@ -79,7 +79,7 @@ defmodule BlitzCredoChecks.MixProject do
   defp deps do
     [
       {:ex_check, "~> 0.12", only: :test, runtime: false},
-      {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.4", runtime: false},
       {:dialyxir, "~> 1.0", only: :test, runtime: false},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:ex_doc, "~> 0.26", only: [:dev, :test], runtime: false},
