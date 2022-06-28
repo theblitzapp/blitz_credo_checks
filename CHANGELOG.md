@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.6 (2022-06-28)
+
 - allowed_modules option for ImproperImport can now take a list of atoms as well as a list of lists
 - Add :consecutive_lines option to UseStream
 - Add ConcurrentIndexMigrations check
