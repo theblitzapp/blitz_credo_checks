@@ -3,6 +3,7 @@
 ## Unreleased
 
 - allowed_modules option for ImproperImport can now take a list of atoms as well as a list of lists
+- Add :consecutive_lines option to UseStream
 
 ## v0.1.5 (2022-05-26)
 
