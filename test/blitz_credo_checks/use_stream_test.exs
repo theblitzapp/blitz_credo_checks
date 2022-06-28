@@ -9,6 +9,7 @@ defmodule BlitzCredoChecks.UseStreamTest do
       def function do
        [1, 2, 3]
         |> Stream.map(& &1 * 2)
+        |> Stream.map(& &1 * 2)
         |> Enum.filter(& div(&1, 3) === 0)
       end
     end
@@ -155,5 +156,20 @@ defmodule BlitzCredoChecks.UseStreamTest do
     |> to_source_file()
     |> UseStream.run([])
     |> assert_issue()
+  end
+
+  test "consecutive_lines can be configured" do
+    """
+    defmodule CredoSampleModule do
+      def function do
+        [1, 2, 3]
+        |> Enum.map(& &1 * 2)
+        |> Enum.filter(& div(&1, 3) === 0)
+      end
+    end
+    """
+    |> to_source_file()
+    |> UseStream.run(consecutive_lines: 3)
+    |> refute_issues()
   end
 end

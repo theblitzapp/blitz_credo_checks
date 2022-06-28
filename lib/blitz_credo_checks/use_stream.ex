@@ -2,7 +2,7 @@ defmodule BlitzCredoChecks.UseStream do
   use Credo.Check,
     base_priority: :high,
     category: :refactor,
-    param_defaults: [files: %{excluded: ["**/*.exs"]}]
+    param_defaults: [files: %{excluded: ["**/*.exs"]}, consecutive_lines: 2]
 
   @moduledoc """
   Use Stream functions instead of piping multiple Enum functions together
@@ -44,17 +44,17 @@ defmodule BlitzCredoChecks.UseStream do
     :zip_with,
     :zip_with
   ]
-  @consecutive_lines 2
 
   @doc false
   @impl Credo.Check
   def run(source_file, params \\ []) do
     issue_meta = IssueMeta.for(source_file, params)
+    consecutive_lines = Params.get(params, :consecutive_lines, __MODULE__)
 
     source_file
     |> Credo.Code.prewalk(&traverse/2, {[], []})
     |> get_lines()
-    |> find_consecutive_lines
+    |> find_consecutive_lines(consecutive_lines)
     |> Enum.map(&issue_for(&1, issue_meta))
   end
 
@@ -167,25 +167,25 @@ defmodule BlitzCredoChecks.UseStream do
     add -- remove
   end
 
-  defp find_consecutive_lines(lines) when length(lines) >= @consecutive_lines do
-    lines =
-      lines
-      |> Stream.uniq()
-      |> Enum.sort()
+  defp find_consecutive_lines(lines, consecutive_lines) do
+    if length(lines) < consecutive_lines do
+      []
+    else
+      lines =
+        lines
+        |> Stream.uniq()
+        |> Enum.sort()
 
-    Enum.flat_map(0..(length(lines) - @consecutive_lines), fn index ->
-      lines
-      |> Enum.slice(index, index + @consecutive_lines)
-      |> Enum.reduce_while([], fn
-        line, [] -> {:cont, [line]}
-        line, [head] when head + 1 === line -> {:cont, [line]}
-        _line, _ -> {:halt, []}
+      Enum.flat_map(0..(length(lines) - consecutive_lines), fn index ->
+        lines
+        |> Enum.slice(index, index + consecutive_lines)
+        |> Enum.reduce_while([], fn
+          line, [] -> {:cont, [line]}
+          line, [head] when head + 1 === line -> {:cont, [line]}
+          _line, _ -> {:halt, []}
+        end)
       end)
-    end)
-  end
-
-  defp find_consecutive_lines(_lines) do
-    []
+    end
   end
 
   defp issue_for(line, issue_meta) do
