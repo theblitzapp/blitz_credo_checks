@@ -40,7 +40,7 @@ defmodule BlitzCredoChecks.ImproperImport do
   @impl Credo.Check
   def run(source_file, params \\ []) do
     issue_meta = IssueMeta.for(source_file, params)
-    allowed_modules = Params.get(params, :allowed_modules, __MODULE__)
+    allowed_modules = params |> Params.get(:allowed_modules, __MODULE__) |> Enum.map(&List.wrap/1)
 
     source_file
     |> Credo.Code.prewalk(&traverse/2, {allowed_modules, [], []})

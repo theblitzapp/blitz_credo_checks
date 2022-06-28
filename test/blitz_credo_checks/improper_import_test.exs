@@ -14,6 +14,28 @@ defmodule BlitzCredoChecks.ImproperImportTest do
     |> assert_issue()
   end
 
+  test "respects allowed modules parameter" do
+    """
+    defmodule CredoSampleModule do
+      import SomeRandomModule
+    end
+    """
+    |> to_source_file()
+    |> ImproperImport.run(allowed_modules: [[:SomeRandomModule]])
+    |> refute_issues()
+  end
+
+  test "respects allowed modules parameter when not wrapped in second list" do
+    """
+    defmodule CredoSampleModule do
+      import SomeRandomModule
+    end
+    """
+    |> to_source_file()
+    |> ImproperImport.run(allowed_modules: [:SomeRandomModule])
+    |> refute_issues()
+  end
+
   test "does not reject imports when specifying which one" do
     """
     defmodule CredoSampleModule do

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- allowed_modules option for ImproperImport can now take a list of atoms as well as a list of lists
+
 ## v0.1.5 (2022-05-26)
 
 - Make Credo available for prod build to resolve OTP 25 errors on release
