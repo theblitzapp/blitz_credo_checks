@@ -36,18 +36,19 @@ Add some or all of these checks under the checks key in `.credo.exs`
 ```elixir
       checks: [
         # Custom checks
+        {BlitzCredoChecks.ConcurrentIndexMigrations, []},
         {BlitzCredoChecks.DocsBeforeSpecs, []},
         {BlitzCredoChecks.DoctestIndent, []},
+        {BlitzCredoChecks.ImproperImport, []}, 
         {BlitzCredoChecks.LowercaseTestNames, []},
         {BlitzCredoChecks.NoAsyncFalse, []},
         {BlitzCredoChecks.NoDSLParentheses, []},
         {BlitzCredoChecks.NoIsBitstring, []},
+        {BlitzCredoChecks.NoRampantRepos, []},
         {BlitzCredoChecks.SetWarningsAsErrorsInTest, []},
         {BlitzCredoChecks.StrictComparison, []},
-        {BlitzCredoChecks.UseStream, []},
-        {BlitzCredoChecks.ImproperImport, []}, 
-        {BlitzCredoChecks.NoRampantRepos, []},
         {BlitzCredoChecks.TodosNeedTickets, ticket_url: "https://linear.app/company/issue/"},
+        {BlitzCredoChecks.UseStream, []},
         
         # ... all the other checks that come with Credo
       ]
