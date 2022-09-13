@@ -19,6 +19,20 @@ defmodule BlitzCredoChecks.UseStreamTest do
     |> refute_issues()
   end
 
+  test "doesn't reject adjacent unpiped enum functions" do
+    """
+    defmodule CredoSampleModule do
+      def function do
+        Enum.each([1, 2, 3], & &1 + 1)
+        Enum.each([1, 2, 3], & &1 * 2)
+      end
+    end
+    """
+    |> to_source_file()
+    |> UseStream.run([])
+    |> refute_issues()
+  end
+
   test "doesn't reject module attributes" do
     """
     defmodule CredoSampleModule do
