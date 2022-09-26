@@ -58,7 +58,10 @@ defmodule BlitzCredoChecks.UseStream do
     |> Enum.map(&issue_for(&1, issue_meta))
   end
 
-  defp traverse({:., _, [{:__aliases__, meta, [:Enum]}, func]} = ast, {add, remove})
+  defp traverse(
+         {:|>, _, [_, {{:., _, [{:__aliases__, meta, [:Enum]}, func]}, _, _}]} = ast,
+         {add, remove}
+       )
        when func in @stream_funcs do
     line = meta[:line]
 

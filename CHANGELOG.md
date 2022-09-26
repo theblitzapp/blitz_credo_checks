@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix for UseStreamTest where it had a false positive on adjacent Enum functions that were not piped into each other
+
 ## v0.1.6 (2022-06-28)
 
 - allowed_modules option for ImproperImport can now take a list of atoms as well as a list of lists
