@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.7 (2022-09-26)
+
 - Fix for UseStreamTest where it had a false positive on adjacent Enum functions that were not piped into each other
 
 ## v0.1.6 (2022-06-28)
