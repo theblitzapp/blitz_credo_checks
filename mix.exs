@@ -83,7 +83,7 @@ defmodule BlitzCredoChecks.MixProject do
       {:dialyxir, "~> 1.0", only: :test, runtime: false},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:ex_doc, "~> 0.26", only: [:dev, :test], runtime: false},
-      {:doctor, "~> 0.19.0", only: :test}
+      {:doctor, "~> 0.20.0", only: :test}
     ]
   end
 end
