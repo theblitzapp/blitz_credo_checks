@@ -172,6 +172,57 @@ defmodule BlitzCredoChecks.UseStreamTest do
     |> assert_issue()
   end
 
+  test "rejects 4 enums in a row" do
+    """
+    defmodule CredoSampleModule do
+      def function do
+        some_function()
+        |> Enum.map(& &1 * 2)
+        |> Enum.map(& &1 * 2)
+        |> Enum.map(& &1 * 2)
+        |> Enum.filter(& div(&1, 3) === 0)
+      end
+    end
+    """
+    |> to_source_file()
+    |> UseStream.run([])
+    |> assert_issues()
+  end
+
+  test "rejects multiple enums in a row" do
+    """
+    defmodule CredoSampleModule do
+      def index_of_player_type(type) do
+        @coaching_player_types
+        |> Enum.with_index()
+        |> Enum.filter(fn {player_type, _} -> player_type === type end)
+        |> Enum.map(fn {_, index} -> index end)
+        |> Enum.at(0)
+      end
+    end
+    """
+    |> to_source_file()
+    |> UseStream.run([])
+    |> assert_issues()
+  end
+
+  test "rejects multiple enums in a row 2" do
+    """
+    defmodule CredoSampleModule do
+      def index_of_league_role(role) do
+        LeagueConstants.roles()
+        |> Enum.with_index()
+        |> Enum.filter(fn {league_role, _} -> league_role === role end)
+        |> Enum.map(fn {_, index} -> index end)
+        |> Enum.at(0)
+      end
+    end
+    """
+    |> to_source_file()
+    |> UseStream.run([])
+    |> assert_issues()
+  end
+
   test "consecutive_lines can be configured" do
     """
     defmodule CredoSampleModule do
