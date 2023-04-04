@@ -182,11 +182,7 @@ defmodule BlitzCredoChecks.UseStream do
       Enum.flat_map(0..(length(lines) - consecutive_lines), fn index ->
         lines
         |> Enum.slice(index, index + consecutive_lines)
-        |> Enum.reduce_while([], fn
-          line, [] -> {:cont, [line]}
-          line, [head] when head + 1 === line -> {:cont, [line]}
-          _line, _ -> {:halt, []}
-        end)
+        |> Enum.reduce_while([], &reduce_lines/2)
       end)
     end
   end
@@ -197,4 +193,8 @@ defmodule BlitzCredoChecks.UseStream do
       line_no: line
     )
   end
+
+  defp reduce_lines(line, []), do: {:cont, [line]}
+  defp reduce_lines(line, [head]) when head + 1 === line, do: {:cont, [line]}
+  defp reduce_lines(_, _), do: {:halt, []}
 end
