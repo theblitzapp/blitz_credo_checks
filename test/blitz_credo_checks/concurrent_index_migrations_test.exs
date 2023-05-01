@@ -35,6 +35,22 @@ defmodule BlitzCredoChecks.ConcurrentIndexMigrationsTest do
     |> assert_issue()
   end
 
+  test "does not enforce concurrent when dropping indexes" do
+    """
+    defmodule MyApp.Migrations.AlterTable do
+      use Ecto.Migration
+
+      def change do
+        drop index(:some_table, [:index, :this])
+      end
+    end
+
+    """
+    |> to_source_file("/app/priv/migrations/some_migration.exs")
+    |> ConcurrentIndexMigrations.run([])
+    |> refute_issues()
+  end
+
   test "passes if nothing happens" do
     """
     defmodule MyApp.Migrations.AlterTable do
