@@ -74,12 +74,13 @@ defmodule BlitzCredoChecks.ConcurrentIndexMigrations do
 
   defguardp is_index(index) when index in @indexes
 
-  defp traverse({index, meta, [_, key]} = ast, {issues, line_numbers})
+  defp traverse({:create, _, [{index, meta, [_, key]}]} = ast, {issues, line_numbers})
        when is_index(index) and (is_atom(key) or is_binary(key)) do
     {ast, {[:fail | issues], [meta[:line] | line_numbers]}}
   end
 
-  defp traverse({index, meta, [_, opts]} = ast, {issues, line_numbers}) when is_index(index) do
+  defp traverse({:create, _, [{index, meta, [_, opts]}]} = ast, {issues, line_numbers})
+       when is_index(index) do
     if opts[:concurrently] do
       {ast, {[:pass | issues], line_numbers}}
     else
@@ -87,7 +88,8 @@ defmodule BlitzCredoChecks.ConcurrentIndexMigrations do
     end
   end
 
-  defp traverse({index, meta, [_, _, opts]} = ast, {issues, line_numbers}) when is_index(index) do
+  defp traverse({:create, _, [{index, meta, [_, _, opts]}]} = ast, {issues, line_numbers})
+       when is_index(index) do
     if opts[:concurrently] do
       {ast, {[:pass | issues], line_numbers}}
     else
