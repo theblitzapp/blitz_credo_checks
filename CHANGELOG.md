@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+
+## v0.1.8 (2023-05-01)
+
 - Don't enforce concurrency when dropping indexes
 
 ## v0.1.7 (2022-09-26)
