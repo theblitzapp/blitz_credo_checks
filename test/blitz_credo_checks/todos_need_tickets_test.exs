@@ -14,7 +14,7 @@ defmodule BlitzCredoChecks.TodosNeedTicketsTest do
     """
     |> to_source_file()
     |> TodosNeedTickets.run(ticket_url: "https://linear.app/blitz/issue/")
-    |> assert_issues()
+    |> assert_issue()
   end
 
   test "accepts todos with a ticket attached" do

@@ -32,6 +32,7 @@ defmodule BlitzCredoChecks.TodosNeedTickets do
       [] ->
         tags
         |> Stream.flat_map(&TagHelper.tags(source_file, &1, true))
+        |> Stream.uniq_by(&elem(&1, 0))
         |> Enum.map(&issue_for(issue_meta, &1))
 
       # We found ticket urls so ignore every todo in file
