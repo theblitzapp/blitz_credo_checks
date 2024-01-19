@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.10 (2024-01-19)
+
 - Fix `DocsBeforeSpecs` to handle specs on `defp` functions.
 
 ## v0.1.9 (2023-11-28)
