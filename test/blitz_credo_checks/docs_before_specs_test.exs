@@ -86,4 +86,66 @@ defmodule BlitzCredoChecks.DocsBeforeSpecsTest do
     |> DocsBeforeSpecs.run([])
     |> refute_issues()
   end
+
+  test "doesnt panic when spec is above private function" do
+    """
+    defmodule BlitzCMS.SomeContext.SomeModule do
+
+      @spec some_function :: String.t()
+      defp some_function do
+        "This does nothing"
+      end
+    end
+    """
+    |> to_source_file()
+    |> DocsBeforeSpecs.run([])
+    |> refute_issues()
+  end
+
+  test "doesnt panic when spec is above private function v2" do
+    """
+    defmodule BlitzCMS.SomeContext.SomeModule do
+
+        @spec hello(String.t()) :: :ok
+        defp hello(_who) do
+          IO.puts("Hello")
+        end
+
+        @doc "Do something"
+        @spec do_something(integer()) :: integer()
+        def do_something(val) do
+          val
+        end
+      end
+    """
+    |> to_source_file()
+    |> DocsBeforeSpecs.run([])
+    |> refute_issues()
+  end
+  test "doesnt panic when spec is above private function v3" do
+    """
+    defmodule Hello do
+      @moduledoc "Documentation for `Hello`"
+
+      @doc "hello"
+      def hello do
+        say_hello("World")
+        :world
+      end
+
+      @spec say_hello(who) :: :ok
+      defp say_hello(who) do
+        IO.puts("Hello, \#{who}!")
+      end
+
+      @doc "hello"
+      def say_hello_ten_times() do
+        # not yet implemented
+      end
+    end
+    """
+    |> to_source_file()
+    |> DocsBeforeSpecs.run([])
+    |> refute_issues()
+  end
 end
