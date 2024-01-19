@@ -36,6 +36,7 @@ defmodule BlitzCredoChecks.DocsBeforeSpecs do
         {:@, _, [{:spec, meta, _}]} -> {:spec, meta[:line]}
         {:@, _, [{:doc, _, _}]} -> :doc
         {:def, _, [_, _]} -> :def
+        {:defp, _, [_, _]} -> :def
         _ -> nil
       end)
       |> Enum.reject(&is_nil/1)

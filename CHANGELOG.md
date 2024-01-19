@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix `DocsBeforeSpecs` to handle specs on `defp` functions.
+
 ## v0.1.9 (2023-11-28)
 
 - De-duplicate `TodosNeedTickets`
